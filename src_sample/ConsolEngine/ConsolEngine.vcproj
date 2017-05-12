@@ -179,6 +179,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\const.h"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
