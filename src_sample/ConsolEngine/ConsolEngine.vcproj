@@ -179,6 +179,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BaseBuild.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
@@ -195,6 +199,10 @@
 				>
 			</File>
 		</Filter>
+		<File
+			RelativePath=".\BaseBuild.h"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>
