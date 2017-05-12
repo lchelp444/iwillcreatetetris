@@ -49,11 +49,11 @@ void TestApp::KeyPressed(int btnCode)
 //		mObj1Y++;
       break;
    case 75:
-	   mMoveLeft=1;
+
 //		mObj1X--;
       break;
    case 77:
-	   mMoveRight=1;
+
 //		mObj1X++;
       break;
    case 32:
@@ -95,8 +95,7 @@ void TestApp::UpdateF(float deltaTime)
 
    int newX = mOldX + mMoveRight - mMoveLeft;
    int newY = mOldY + 1;
-	mMoveRight=0;
-		mMoveLeft=0;
+
    for (int i=0; i<4; i++)
       for (int j=0; j<2; j++)
          SetChar(mOldX + i, mOldY + j, L'.');
@@ -118,6 +117,7 @@ void TestApp::UpdateF(float deltaTime)
 
    if(mPressDown) Sleep(40);
    else Sleep(150);
+   
 	//SetChar(mObj1XOld, mObj1YOld, L' ');
 	//SetChar(mObj1X, mObj1Y, L'O');
 
