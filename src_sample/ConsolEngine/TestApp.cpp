@@ -48,14 +48,14 @@ void TestApp::KeyPressed(int btnCode)
 
 //		mObj1Y++;
       break;
-   case 75:
+   case 75: // ради бога добавить ебаные границы
 	mOldX--;
       break;
    case 77:
 mOldX++;
       break;
    case 32:
-//	добавить переворот на пробел
+//	добавить переворот на пробел с дохуя условиями
       break;
    case 13:
       mNextFigureNumb = rand() % 7;
@@ -82,7 +82,7 @@ mOldX++;
 	//	mObj1Y = Y_SIZE - 1;
 }
 
-void TestApp::UpdateF(float deltaTime)
+void TestApp::UpdateF(float deltaTime) // ебошит постоянно, можно добавить условия и сюда
 {
 	for (int i=0; i<4; i++)//коробка предсказаний
       for (int j=0; j<2; j++)
@@ -91,7 +91,7 @@ void TestApp::UpdateF(float deltaTime)
          else SetChar(GAME_POLE_WIDTH + 2 + i, j + 2, L'.');
       }
 
-   int newX = mOldX + mMoveRight - mMoveLeft;
+   int newX = mOldX + mMoveRight - mMoveLeft; // добавить условие нижнего блока, если есть что-то ниже тогда остановить и ебошить дальше новую фигуру с начала
    int newY = mOldY + 1;
   // dstop =true;
   // for (int i=0; i<4; i++)
@@ -101,19 +101,18 @@ void TestApp::UpdateF(float deltaTime)
  // // }
 	//if (dstop)
 	//{
-   for (int i=0; i<5; i++)
+   for (int i=0; i<4; i++)
       for (int j=0; j<2; j++)
-		  if (GetChar(mOldX + i-1, mOldY + j)!='#')
-         SetChar(mOldX + i-1, mOldY + j, L'.');
+         SetChar(mOldX + i, mOldY + j, L'.');
 
    for (int i=0; i<4; i++)
       for (int j=0; j<2; j++)
-         if (FIGURE[mFigureNumb][j][i]) SetChar(newX + i, newY + j, L'*');
+         if (FIGURE[mFigureNumb][j][i]) SetChar(newX + i, newY + j, L'*');// перенести в движения чтобы было без багов, в движения так же поставить
 
    mOldX = newX;
    mOldY = newY;
 	
-   if(mOldY > GAME_SCREEN_HEIGHT - 4) 
+   if(mOldY > GAME_SCREEN_HEIGHT - 4) // если достигает низа -- ебошит новую фигуру
    {
       mOldY = 1;
 	  mOldX =8;
