@@ -358,7 +358,7 @@ void TestApp::UpdateF(float deltaTime) // ебошит постоянно, можно добавить услов
       for (int j=0; j<4; j++)
          if (FIGURE[mFigureNumb][j][i])
 		 {
-			 if (GetChar(mOldX+i,newY)=='#'||GetChar(mOldX+i,newY)=='X')
+			 if (GetChar(mOldX+i,newY+j)=='#'||GetChar(mOldX+i,newY+j)=='X')
 				 dstop=false;
 		 }
 if (dstop)
