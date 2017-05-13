@@ -31,6 +31,7 @@ class TestApp : public BaseApp
       
       bool mPressDown;
 	bool dstop;
+	bool dbreakspace;
 	public:
 		TestApp();
 		virtual void KeyPressed(int btnCode);

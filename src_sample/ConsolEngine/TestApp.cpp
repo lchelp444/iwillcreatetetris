@@ -23,8 +23,8 @@ TestApp::TestApp() : Parent(100, 80)
       }
    }
    srand((int)time(NULL));
-   mFigureNumb = rand() % 7;
-   mNextFigureNumb = rand() % 7;
+   mFigureNumb = rand() % 19;
+   mNextFigureNumb = rand() % 19;
 
    mMoveRight = 0;
    mMoveLeft = 0;
@@ -79,26 +79,29 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
       break;
 }
    case 32:
-
+	dbreakspace=true;
 	   switch (mFigureNumb)
 	   {
 	   case 0:
 			for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[1][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
+			dbreakspace=false;
 			break;
 			}
+		  if (dbreakspace){
 			for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
          if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
 			mFigureNumb=1;
+		  }
 		   break;
 	   case 1:
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[0][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+		  {if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -112,7 +115,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[4][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -124,7 +127,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[3][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -136,7 +139,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 			for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[6][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -148,7 +151,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[5][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -160,7 +163,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[8][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -172,7 +175,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[9][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -184,7 +187,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[10][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -196,7 +199,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[7][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -208,7 +211,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[12][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -220,7 +223,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[13][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -232,7 +235,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[14][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -244,7 +247,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[11][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -256,7 +259,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[16][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -268,7 +271,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[17][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -280,7 +283,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[18][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -292,7 +295,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 		   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
 		  if (FIGURE[15][j][i])
-			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			{if (GetChar(mOldX + i, mOldY + j)=='#'||GetChar(mOldX + i, mOldY + j)=='X')
 			break;
 			}
 			for (int i=0; i<4; i++)
@@ -307,7 +310,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 //	добавить переворот на пробел с дохуя условиями +
       break;
    case 13:
-      mNextFigureNumb = rand() % 7;
+      mNextFigureNumb = rand() % 19;
       break;
    }
 
@@ -350,6 +353,16 @@ void TestApp::UpdateF(float deltaTime) // ебошит постоянно, можно добавить услов
  // // }
 	//if (dstop)
 	//{
+   dstop = true;
+   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i])
+		 {
+			 if (GetChar(mOldX+i,newY)=='#'||GetChar(mOldX+i,newY)=='X')
+				 dstop=false;
+		 }
+if (dstop)
+{
    for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
          if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
@@ -363,14 +376,29 @@ void TestApp::UpdateF(float deltaTime) // ебошит постоянно, можно добавить услов
 	
    if(mOldY > GAME_SCREEN_HEIGHT - 4) // если достигает низа -- ебошит новую фигуру переделать нахуй в новое
    {
+	   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'X');
       mOldY = 1;
 	  mOldX =8;
       mFigureNumb = mNextFigureNumb;
-      mNextFigureNumb = rand() % 7;
+      mNextFigureNumb = rand() % 19;
       mPressDown = false;
    }
+}
+else
+{
+	for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'X');
+      mOldY = 1;
+	  mOldX =8;
+      mFigureNumb = mNextFigureNumb;
+      mNextFigureNumb = rand() % 19;
+      mPressDown = false;
+}
 
-   if(mPressDown) Sleep(40);
+if(mPressDown) Sleep(40);
    else Sleep(150);
 	/*}
 	else
