@@ -54,11 +54,11 @@ void TestApp::KeyPressed(int btnCode)
 	if (GetChar(mOldX-1,mOldY)=='.')
 	{
    for (int i=0; i<4; i++)
-      for (int j=0; j<2; j++)
+      for (int j=0; j<4; j++)
          if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
 
    for (int i=0; i<4; i++)
-      for (int j=0; j<2; j++)
+      for (int j=0; j<4; j++)
          if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX-1 + i, mOldY + j, L'*');
    mOldX--;
 	}
@@ -69,17 +69,242 @@ mMoveRight++;
 if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 {
    for (int i=0; i<4; i++)
-      for (int j=0; j<2; j++)
+      for (int j=0; j<4; j++)
          if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
 
    for (int i=0; i<4; i++)
-      for (int j=0; j<2; j++)
+      for (int j=0; j<4; j++)
          if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX+1 + i, mOldY + j, L'*');
    mOldX++;
       break;
 }
    case 32:
-//	добавить переворот на пробел с дохуя условиями
+
+	   switch (mFigureNumb)
+	   {
+	   case 0:
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[1][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=1;
+		   break;
+	   case 1:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[0][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=0;
+		   break;
+	   case 2:
+		   break;
+	   case 3:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[4][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=4;
+		   break;
+	   case 4:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[3][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=3;
+		   break;
+		case 5:
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[6][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=6;
+		   break;
+	   case 6:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[5][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=5;
+		   break;
+	   case 7:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[8][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=8;
+		   break;
+	   case 8:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[9][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=9;
+		   break;
+	   case 9:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[10][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=10;
+		   break;
+	   case 10:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[7][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=7;
+		   break;
+	   case 11:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[12][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=12;
+		   break;
+	   case 12:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[13][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=13;
+		   break;
+	   case 13:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[14][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=14;
+		   break;
+	   case 14:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[11][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=11;
+		   break;
+	   case 15:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[16][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=16;
+		   break;
+	   case 16:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[17][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=17;
+		   break;
+	   case 17:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[18][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=18;
+		   break;
+	   case 18:
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+		  if (FIGURE[15][j][i])
+			{if (GetChar(mOldX + i, mOldY + j)!='.');
+			break;
+			}
+			for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+			mFigureNumb=15;
+		   break;
+		   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX+1 + i, mOldY + j, L'*');
+	   }
+//	добавить переворот на пробел с дохуя условиями +
       break;
    case 13:
       mNextFigureNumb = rand() % 7;
@@ -109,7 +334,7 @@ if(GetChar(mOldX+mMoveRight,mOldY)=='.')
 void TestApp::UpdateF(float deltaTime) // ебошит постоянно, можно добавить условия и сюда
 {
 	for (int i=0; i<4; i++)//коробка предсказаний
-      for (int j=0; j<2; j++)
+      for (int j=0; j<4; j++)
       {
          if (FIGURE[mNextFigureNumb][j][i]) SetChar(GAME_POLE_WIDTH + 2 + i, j + 2, L'*');
          else SetChar(GAME_POLE_WIDTH + 2 + i, j + 2, L'.');
@@ -126,17 +351,17 @@ void TestApp::UpdateF(float deltaTime) // ебошит постоянно, можно добавить услов
 	//if (dstop)
 	//{
    for (int i=0; i<4; i++)
-      for (int j=0; j<2; j++)
+      for (int j=0; j<4; j++)
          if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
 
    for (int i=0; i<4; i++)
-      for (int j=0; j<2; j++)
+      for (int j=0; j<4; j++)
          if (FIGURE[mFigureNumb][j][i]) SetChar(newX + i, newY + j, L'*');// перенести в движения чтобы было без багов, в движения так же поставить
 
    mOldX = newX;
    mOldY = newY;
 	
-   if(mOldY > GAME_SCREEN_HEIGHT - 4) // если достигает низа -- ебошит новую фигуру
+   if(mOldY > GAME_SCREEN_HEIGHT - 4) // если достигает низа -- ебошит новую фигуру переделать нахуй в новое
    {
       mOldY = 1;
 	  mOldX =8;

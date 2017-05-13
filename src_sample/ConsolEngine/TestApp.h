@@ -27,6 +27,7 @@ class TestApp : public BaseApp
 
       int mOldX;
       int mOldY;
+
       
       bool mPressDown;
 	bool dstop;
