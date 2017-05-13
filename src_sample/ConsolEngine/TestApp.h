@@ -29,7 +29,7 @@ class TestApp : public BaseApp
       int mOldY;
       
       bool mPressDown;
-		
+	bool dstop;
 	public:
 		TestApp();
 		virtual void KeyPressed(int btnCode);
