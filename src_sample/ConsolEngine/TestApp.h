@@ -33,6 +33,7 @@ class TestApp : public BaseApp
 	bool dstop;
 	bool dbreakspace;
 	bool goside;
+	bool delline;
 	public:
 		TestApp();
 		virtual void KeyPressed(int btnCode);
