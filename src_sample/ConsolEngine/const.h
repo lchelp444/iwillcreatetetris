@@ -8,8 +8,8 @@ const int FIGURE_PREVIEW_POLE_WIDTH = 8;
 const int FIGURE_PREVIEW_POLE_HEIGHT = 5;
 
 const bool FIGURE[7][2][4] = {
-  {{0,0,0,0},
-   {1,1,1,1}},
+	{{1,1,1,1},
+   {0,0,0,0}},
 
   {{0,1,1,0},
    {0,1,1,0}},

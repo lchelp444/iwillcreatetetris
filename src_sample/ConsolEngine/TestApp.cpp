@@ -32,6 +32,8 @@ TestApp::TestApp() : Parent(100, 80)
 
    mOldX = GAME_POLE_WIDTH/2;
    mOldY = 1;
+   mMoveLeft=100;
+	mMoveRight=0;
 }
 
 void TestApp::KeyPressed(int btnCode)
@@ -49,11 +51,33 @@ void TestApp::KeyPressed(int btnCode)
 //		mObj1Y++;
       break;
    case 75: // ради бога добавить ебаные границы
-	mOldX--;
+	if (GetChar(mOldX-1,mOldY)=='.')
+	{
+   for (int i=0; i<4; i++)
+      for (int j=0; j<2; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+
+   for (int i=0; i<4; i++)
+      for (int j=0; j<2; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX-1 + i, mOldY + j, L'*');
+   mOldX--;
+	}
       break;
    case 77:
-mOldX++;
+while (GetChar(mOldX+mMoveRight,mOldY)=='*')
+mMoveRight++;
+if(GetChar(mOldX+mMoveRight,mOldY)=='.')
+{
+   for (int i=0; i<4; i++)
+      for (int j=0; j<2; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+
+   for (int i=0; i<4; i++)
+      for (int j=0; j<2; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX+1 + i, mOldY + j, L'*');
+   mOldX++;
       break;
+}
    case 32:
 //	добавить переворот на пробел с дохуя условиями
       break;
@@ -91,7 +115,7 @@ void TestApp::UpdateF(float deltaTime) // ебошит постоянно, можно добавить услов
          else SetChar(GAME_POLE_WIDTH + 2 + i, j + 2, L'.');
       }
 
-   int newX = mOldX + mMoveRight - mMoveLeft; // добавить условие нижнего блока, если есть что-то ниже тогда остановить и ебошить дальше новую фигуру с начала
+   int newX = mOldX ; // добавить условие нижнего блока, если есть что-то ниже тогда остановить и ебошить дальше новую фигуру с начала
    int newY = mOldY + 1;
   // dstop =true;
   // for (int i=0; i<4; i++)
@@ -103,7 +127,7 @@ void TestApp::UpdateF(float deltaTime) // ебошит постоянно, можно добавить услов
 	//{
    for (int i=0; i<4; i++)
       for (int j=0; j<2; j++)
-         SetChar(mOldX + i, mOldY + j, L'.');
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
 
    for (int i=0; i<4; i++)
       for (int j=0; j<2; j++)
