@@ -42,6 +42,9 @@ void TestApp::KeyPressed(int btnCode)
       btnCode = getch();
 	switch (btnCode)
    {
+	  case 13:
+      mNextFigureNumb = rand() % 19;
+      break;
    case 72: 
 //		mObj1Y--;
       break;
@@ -488,9 +491,7 @@ void TestApp::KeyPressed(int btnCode)
 	
 
 	}
-   case 13:
-      mNextFigureNumb = rand() % 19;
-      break;
+
    }
    
 
@@ -603,9 +604,9 @@ else
 				delline=false;			// нахождение строки которую можно удаллить
 		if (delline)
 		{
-			for (int xdel=1;xdel<16;xdl++) //превращаем строку в точки
-				SetChar(xdel,mOldY,'.');
-			for (int k=1;j<mOldY+j;j--) //удаление строки
+			//for (int xdel=1;xdel<16;xdel++) //превращаем строку в точки
+			//	SetChar(xdel,mOldY,'.');
+			for (int k=mOldY+j;k>2;k--) //удаление строки тоесть замена верхними символами
 				for (int g=1; g<16;g++)
 				SetChar(g,k,GetChar(g,k-1));
 		}
