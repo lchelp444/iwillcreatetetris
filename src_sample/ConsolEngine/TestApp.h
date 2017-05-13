@@ -34,6 +34,7 @@ class TestApp : public BaseApp
 	bool dbreakspace;
 	bool goside;
 	bool delline;
+	char puzir;
 	public:
 		TestApp();
 		virtual void KeyPressed(int btnCode);
