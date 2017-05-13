@@ -51,7 +51,8 @@ void TestApp::KeyPressed(int btnCode)
 //		mObj1Y++;
       break;
    case 75: // ради бога добавить ебаные границы
-	if (GetChar(mOldX-1,mOldY)=='.')
+
+	/*if (GetChar(mOldX-1,mOldY)=='.')
 	{
    for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
@@ -61,7 +62,28 @@ void TestApp::KeyPressed(int btnCode)
       for (int j=0; j<4; j++)
          if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX-1 + i, mOldY + j, L'*');
    mOldX--;
-	}
+	}*/
+	   goside=true;
+		for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i])
+		 {
+			 if (GetChar(mOldX+i-1,mOldY+j)=='#'||GetChar(mOldX+i-1,mOldY+j)=='X')
+				 goside=false;
+		 }
+		 if(goside)
+		 {
+			 for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX + i, mOldY + j, L'.');
+
+   for (int i=0; i<4; i++)
+      for (int j=0; j<4; j++)
+         if (FIGURE[mFigureNumb][j][i]) SetChar(mOldX-1 + i, mOldY + j, L'*');
+			 mOldX--;
+		 }
+		 else
+
       break;
    case 77:
 while (GetChar(mOldX+mMoveRight,mOldY)=='*')
@@ -342,7 +364,7 @@ void TestApp::UpdateF(float deltaTime) // ебошит постоянно, можно добавить услов
          if (FIGURE[mNextFigureNumb][j][i]) SetChar(GAME_POLE_WIDTH + 2 + i, j + 2, L'*');
          else SetChar(GAME_POLE_WIDTH + 2 + i, j + 2, L'.');
       }
-
+	
    int newX = mOldX ; // добавить условие нижнего блока, если есть что-то ниже тогда остановить и ебошить дальше новую фигуру с начала
    int newY = mOldY + 1;
   // dstop =true;
@@ -374,7 +396,7 @@ if (dstop)
    mOldX = newX;
    mOldY = newY;
 	
-   if(mOldY > GAME_SCREEN_HEIGHT - 4) // если достигает низа -- ебошит новую фигуру переделать нахуй в новое
+   if(mOldY > GAME_SCREEN_HEIGHT - 4) // если достигает низа -- ебошит новую фигуру переделать нахуй в новое +
    {
 	   for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
@@ -384,6 +406,25 @@ if (dstop)
       mFigureNumb = mNextFigureNumb;
       mNextFigureNumb = rand() % 19;
       mPressDown = false;
+	  if (GetChar(8,1)=='X')
+	{
+		for (int y=0; y < GAME_SCREEN_HEIGHT; y++)
+   {
+      for (int x=0; x < GAME_SCREEN_WIDTH; x++) 
+      {
+         if (y==0 || 
+             (y==(GAME_SCREEN_HEIGHT-1) && x>=0 && x<=GAME_POLE_WIDTH) ||
+             x==0 || 
+             x==GAME_POLE_WIDTH ||
+             (x==(GAME_SCREEN_WIDTH-1) && y>=0 && y<=FIGURE_PREVIEW_POLE_HEIGHT) ||
+             (y==FIGURE_PREVIEW_POLE_HEIGHT && x>=GAME_POLE_WIDTH && x<(GAME_SCREEN_WIDTH-1)))
+                  SetChar(x, y, L'#');
+         else if ((y>0 && y<(GAME_POLE_HEIGHT-1) && x>0 && x<GAME_POLE_WIDTH) ||
+                  (y>0 && y<FIGURE_PREVIEW_POLE_HEIGHT && x>GAME_POLE_WIDTH && x<(GAME_SCREEN_WIDTH-1)))
+                     SetChar(x, y, L'.');
+      }
+   }
+	}
    }
 }
 else
@@ -396,6 +437,25 @@ else
       mFigureNumb = mNextFigureNumb;
       mNextFigureNumb = rand() % 19;
       mPressDown = false;
+	  if (GetChar(8,1)=='X')
+	{
+		for (int y=0; y < GAME_SCREEN_HEIGHT; y++)
+   {
+      for (int x=0; x < GAME_SCREEN_WIDTH; x++) 
+      {
+         if (y==0 || 
+             (y==(GAME_SCREEN_HEIGHT-1) && x>=0 && x<=GAME_POLE_WIDTH) ||
+             x==0 || 
+             x==GAME_POLE_WIDTH ||
+             (x==(GAME_SCREEN_WIDTH-1) && y>=0 && y<=FIGURE_PREVIEW_POLE_HEIGHT) ||
+             (y==FIGURE_PREVIEW_POLE_HEIGHT && x>=GAME_POLE_WIDTH && x<(GAME_SCREEN_WIDTH-1)))
+                  SetChar(x, y, L'#');
+         else if ((y>0 && y<(GAME_POLE_HEIGHT-1) && x>0 && x<GAME_POLE_WIDTH) ||
+                  (y>0 && y<FIGURE_PREVIEW_POLE_HEIGHT && x>GAME_POLE_WIDTH && x<(GAME_SCREEN_WIDTH-1)))
+                     SetChar(x, y, L'.');
+      }
+   }
+	}
 }
 
 if(mPressDown) Sleep(40);
