@@ -49,11 +49,9 @@ void TestApp::KeyPressed(int btnCode)
 //		mObj1Y++;
       break;
    case 75:
-	   if (GetChar(mOldX-2,mOldY)!='#'&&GetChar(mOldX-1,mOldY)!='*')
 	mOldX--;
       break;
    case 77:
-if (GetChar(mOldX+1,mOldY)!='#'&&GetChar(mOldX+1,mOldY)!='*')
 mOldX++;
       break;
    case 32:
@@ -86,7 +84,7 @@ mOldX++;
 
 void TestApp::UpdateF(float deltaTime)
 {
-	for (int i=0; i<4; i++)
+	for (int i=0; i<4; i++)//коробка предсказаний
       for (int j=0; j<2; j++)
       {
          if (FIGURE[mNextFigureNumb][j][i]) SetChar(GAME_POLE_WIDTH + 2 + i, j + 2, L'*');
@@ -95,16 +93,17 @@ void TestApp::UpdateF(float deltaTime)
 
    int newX = mOldX + mMoveRight - mMoveLeft;
    int newY = mOldY + 1;
-   dstop =true;
-   for (int i=0; i<4; i++)
-   {	if (FIGURE[mFigureNumb][2][i])
-		if (GetChar(mOldX+i,mOldY+1)=='*')
-			dstop=false;
-   }
-	if (dstop)
-	{
+  // dstop =true;
+  // for (int i=0; i<4; i++)
+  // {	if (FIGURE[mFigureNumb][2][i])
+	//	//if (GetChar(mOldX+i,mOldY+1)=='*')
+	//	//	dstop=false;
+ // // }
+	//if (dstop)
+	//{
    for (int i=0; i<5; i++)
       for (int j=0; j<2; j++)
+		  if (GetChar(mOldX + i-1, mOldY + j)!='#')
          SetChar(mOldX + i-1, mOldY + j, L'.');
 
    for (int i=0; i<4; i++)
@@ -125,7 +124,7 @@ void TestApp::UpdateF(float deltaTime)
 
    if(mPressDown) Sleep(40);
    else Sleep(150);
-	}
+	/*}
 	else
 	{
 		mOldY = 1;
@@ -133,7 +132,7 @@ void TestApp::UpdateF(float deltaTime)
       mFigureNumb = mNextFigureNumb;
       mNextFigureNumb = rand() % 7;
       mPressDown = false;
-	}
+	}*/
    
 	//SetChar(mObj1XOld, mObj1YOld, L' ');
 	//SetChar(mObj1X, mObj1Y, L'O');
