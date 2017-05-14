@@ -95,7 +95,7 @@ void BaseApp::Run()
 		timer.Start();
 		if (_kbhit())
 		{
-			KeyPressed (_getch());
+			KeyPressed (getch());
 			if (!FlushConsoleInputBuffer(mConsoleIn))
 				cout<<"FlushConsoleInputBuffer failed with error "<<GetLastError();
 		}

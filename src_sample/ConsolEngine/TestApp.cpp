@@ -6,7 +6,7 @@
 
 TestApp::TestApp() : Parent(100, 80)
 {
-	for (int y=0; y < GAME_SCREEN_HEIGHT; y++)
+	for (int y=0; y < GAME_SCREEN_HEIGHT; y++)  //рисуем поле
    {
       for (int x=0; x < GAME_SCREEN_WIDTH; x++) 
       {
@@ -21,7 +21,7 @@ TestApp::TestApp() : Parent(100, 80)
                   (y>0 && y<FIGURE_PREVIEW_POLE_HEIGHT && x>GAME_POLE_WIDTH && x<(GAME_SCREEN_WIDTH-1)))
                      SetChar(x, y, L'.');
       }
-   }
+   }//начальное
    srand((int)time(NULL));
    mFigureNumb = rand() % 19;
    mNextFigureNumb = rand() % 19;
@@ -42,7 +42,7 @@ void TestApp::KeyPressed(int btnCode)
       btnCode = getch();
 	switch (btnCode)
    {
-	  case 13:
+	  case 13:   // на ентере -- смена след фигуры, отображается в коробке предсказаний
       mNextFigureNumb = rand() % 19;
       break;
    case 72: 
@@ -53,7 +53,7 @@ void TestApp::KeyPressed(int btnCode)
 
 //		mObj1Y++;
       break;
-   case 75: // ради бога добавить ебаные границы
+   case 75: // движение фигуры в левую сторону
 
 	/*if (GetChar(mOldX-1,mOldY)=='.')
 	{
@@ -88,7 +88,7 @@ void TestApp::KeyPressed(int btnCode)
 		 
 
       break;
-   case 77:
+   case 77:   //движение фигуры в правую сторону
 //while (GetChar(mOldX+mMoveRight,mOldY)=='*')
 //mMoveRight++;
 //if(GetChar(mOldX+mMoveRight,mOldY)=='.')
@@ -123,7 +123,7 @@ void TestApp::KeyPressed(int btnCode)
       break;
 
    case 32:
-	   dbreakspace=true;
+	   dbreakspace=true;  //пробел
 	   switch (mFigureNumb)
 	{
 	case 0: 
@@ -515,7 +515,7 @@ void TestApp::KeyPressed(int btnCode)
 	//	mObj1Y = Y_SIZE - 1;
 }
 
-void TestApp::UpdateF(float deltaTime) // ебошит постоянно, можно добавить условия и сюда
+void TestApp::UpdateF(float deltaTime) 
 {
 	for (int i=0; i<4; i++)//коробка предсказаний
       for (int j=0; j<4; j++)
@@ -524,7 +524,7 @@ void TestApp::UpdateF(float deltaTime) // ебошит постоянно, можно добавить услов
          else SetChar(GAME_POLE_WIDTH + 2 + i, j + 2, L'.');
       }
 	
-   int newX = mOldX ; // добавить условие нижнего блока, если есть что-то ниже тогда остановить и ебошить дальше новую фигуру с начала
+   int newX = mOldX ;
    int newY = mOldY + 1;
   // dstop =true;
   // for (int i=0; i<4; i++)
@@ -550,12 +550,12 @@ if (dstop)
 
    for (int i=0; i<4; i++)
       for (int j=0; j<4; j++)
-         if (FIGURE[mFigureNumb][j][i]) SetChar(newX + i, newY + j, L'*');// перенести в движения чтобы было без багов, в движения так же поставить
+         if (FIGURE[mFigureNumb][j][i]) SetChar(newX + i, newY + j, L'*');
 
    mOldX = newX;
    mOldY = newY;
 	
- //  if(mOldY > GAME_SCREEN_HEIGHT - 4) // если достигает низа -- ебошит новую фигуру переделать нахуй в новое +
+ //  if(mOldY > GAME_SCREEN_HEIGHT - 4) // если достигает низа -- генерит новую фигуру, переделать в новое +
  //  {
 	//   for (int i=0; i<4; i++)
  //     for (int j=0; j<4; j++)
@@ -606,14 +606,14 @@ else
 		{
 			//for (int xdel=1;xdel<16;xdel++) //превращаем строку в точки
 			//	SetChar(xdel,mOldY,'.');
-			for (int k=mOldY+j;k>2;k--) //удаление строки тоесть замена верхними символами
+			for (int k=mOldY+j;k>2;k--) //удаление строки
 				for (int g=1; g<16;g++)
 				SetChar(g,k,GetChar(g,k-1));
 		}
 	}
 	mOldY = 1;
 	  mOldX =8;
-	  if (GetChar(8,1)=='X')
+	  if (GetChar(8,1)=='X') //если проиграл -- очищает весь экран
 	{
 		for (int y=0; y < GAME_SCREEN_HEIGHT; y++)
    {
